@@ -1,4 +1,4 @@
-1. Двоичное дерево поиска (Binary Search Tree) в C++:
+1. Р”РІРѕРёС‡РЅРѕРµ РґРµСЂРµРІРѕ РїРѕРёСЃРєР° (Binary Search Tree) РІ C++:
 #include <iostream>
 
 class TreeNode {
@@ -66,7 +66,7 @@ int main() {
     return 0;
 }
 
-2. Heap (Куча) в C++:
+2. Heap (РљСѓС‡Р°) РІ C++:
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -98,7 +98,7 @@ int main() {
     return 0;
 }
 
-3. Связанный список (Linked List) в C++:
+3. РЎРІСЏР·Р°РЅРЅС‹Р№ СЃРїРёСЃРѕРє (Linked List) РІ C++:
 #include <iostream>
 
 class Node {
@@ -134,7 +134,7 @@ int main() {
     return 0;
 }
 
-4. Префиксное дерево (Trie) в C++:
+4. РџСЂРµС„РёРєСЃРЅРѕРµ РґРµСЂРµРІРѕ (Trie) РІ C++:
 #include <iostream>
 #include <unordered_map>
 
