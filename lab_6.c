@@ -4,33 +4,33 @@ NUM 1
 
 class Matrix {
 private:
-    std::vector<std::vector<double>> data; // двумерный вектор для хранения данных матрицы
+    std::vector<std::vector<double>> data; // РґРІСѓРјРµСЂРЅС‹Р№ РІРµРєС‚РѕСЂ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РјР°С‚СЂРёС†С‹
 
 public:
-    // Конструктор для создания матрицы заданного размера с нулевыми значениями
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РјР°С‚СЂРёС†С‹ Р·Р°РґР°РЅРЅРѕРіРѕ СЂР°Р·РјРµСЂР° СЃ РЅСѓР»РµРІС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё
     Matrix(int rows, int cols) : data(rows, std::vector<double>(cols, 0.0)) {}
 
-    // Метод для получения количества строк
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚СЂРѕРє
     int getRows() const {
         return data.size();
     }
 
-    // Метод для получения количества столбцов
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° СЃС‚РѕР»Р±С†РѕРІ
     int getCols() const {
         return data[0].size();
     }
 
-    // Метод для установки значения элемента матрицы
+    // РњРµС‚РѕРґ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РјР°С‚СЂРёС†С‹
     void setElement(int row, int col, double value) {
         data[row][col] = value;
     }
 
-    // Метод для получения значения элемента матрицы
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РјР°С‚СЂРёС†С‹
     double getElement(int row, int col) const {
         return data[row][col];
     }
 
-    // Метод для сложения двух матриц
+    // РњРµС‚РѕРґ РґР»СЏ СЃР»РѕР¶РµРЅРёСЏ РґРІСѓС… РјР°С‚СЂРёС†
     Matrix add(const Matrix& other) const {
         if (getRows() != other.getRows() || getCols() != other.getCols()) {
             throw std::invalid_argument("Matrices must have the same dimensions for addition.");
@@ -46,7 +46,7 @@ public:
         return result;
     }
 
-    // Метод для вычитания одной матрицы из другой
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ РѕРґРЅРѕР№ РјР°С‚СЂРёС†С‹ РёР· РґСЂСѓРіРѕР№
     Matrix subtract(const Matrix& other) const {
         if (getRows() != other.getRows() || getCols() != other.getCols()) {
             throw std::invalid_argument("Matrices must have the same dimensions for subtraction.");
@@ -62,7 +62,7 @@ public:
         return result;
     }
 
-    // Метод для умножения матрицы на число
+    // РњРµС‚РѕРґ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РјР°С‚СЂРёС†С‹ РЅР° С‡РёСЃР»Рѕ
     Matrix multiplyByScalar(double scalar) const {
         Matrix result(getRows(), getCols());
         for (int i = 0; i < getRows(); ++i) {
@@ -74,7 +74,7 @@ public:
         return result;
     }
 
-    // Метод для умножения двух матриц
+    // РњРµС‚РѕРґ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РґРІСѓС… РјР°С‚СЂРёС†
     Matrix multiply(const Matrix& other) const {
         if (getCols() != other.getRows()) {
             throw std::invalid_argument("Number of columns in the first matrix must be equal to the number of rows in the second matrix for multiplication.");
@@ -94,7 +94,7 @@ public:
         return result;
     }
 
-    // Метод для получения транспонированной матрицы
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С‚СЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРЅРѕР№ РјР°С‚СЂРёС†С‹
     Matrix transpose() const {
         Matrix result(getCols(), getRows());
         for (int i = 0; i < getRows(); ++i) {
@@ -106,14 +106,14 @@ public:
         return result;
     }
 
-    // Метод для возведения матрицы в степень (для целых положительных степеней)
+    // РњРµС‚РѕРґ РґР»СЏ РІРѕР·РІРµРґРµРЅРёСЏ РјР°С‚СЂРёС†С‹ РІ СЃС‚РµРїРµРЅСЊ (РґР»СЏ С†РµР»С‹С… РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… СЃС‚РµРїРµРЅРµР№)
     Matrix power(int exponent) const {
         if (exponent < 0) {
             throw std::invalid_argument("Exponent must be a non-negative integer.");
         }
 
         if (exponent == 0) {
-            // Возвести в нулевую степень возвращает единичную матрицу
+            // Р’РѕР·РІРµСЃС‚Рё РІ РЅСѓР»РµРІСѓСЋ СЃС‚РµРїРµРЅСЊ РІРѕР·РІСЂР°С‰Р°РµС‚ РµРґРёРЅРёС‡РЅСѓСЋ РјР°С‚СЂРёС†Сѓ
             Matrix result(getRows(), getCols());
             for (int i = 0; i < getRows(); ++i) {
                 for (int j = 0; j < getCols(); ++j) {
@@ -133,28 +133,28 @@ public:
 };
 
 int main() {
-    // Пример использования
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     Matrix A(2, 3);
     Matrix B(3, 2);
 
-    // Заполнение матриц A и B данными (по вашему желанию)
+    // Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°С‚СЂРёС† A Рё B РґР°РЅРЅС‹РјРё (РїРѕ РІР°С€РµРјСѓ Р¶РµР»Р°РЅРёСЋ)
 
-    // a. Сложение матриц
+    // a. РЎР»РѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
     Matrix C = A.add(B);
 
-    // b. Вычитание матриц
+    // b. Р’С‹С‡РёС‚Р°РЅРёРµ РјР°С‚СЂРёС†
     Matrix D = A.subtract(B);
 
-    // c. Умножение матрицы на число
+    // c. РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° С‡РёСЃР»Рѕ
     Matrix E = A.multiplyByScalar(2.0);
 
-    // d. Умножение матриц
+    // d. РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
     Matrix F = A.multiply(B);
 
-    // e. Транспонированная матрица
+    // e. РўСЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРЅР°СЏ РјР°С‚СЂРёС†Р°
     Matrix G = A.transpose();
 
-    // f. Возведение матрицы в степень
+    // f. Р’РѕР·РІРµРґРµРЅРёРµ РјР°С‚СЂРёС†С‹ РІ СЃС‚РµРїРµРЅСЊ
     Matrix H = A.power(2);
 
     return 0;
@@ -172,20 +172,20 @@ private:
     double x, y, z;
 
 public:
-    // a. Конструктор с параметрами в виде списка координат x, y, z
+    // a. РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РІ РІРёРґРµ СЃРїРёСЃРєР° РєРѕРѕСЂРґРёРЅР°С‚ x, y, z
     Vector3D(double xCoord, double yCoord, double zCoord) : x(xCoord), y(yCoord), z(zCoord) {}
 
-    // b. Метод, вычисляющий длину вектора
+    // b. РњРµС‚РѕРґ, РІС‹С‡РёСЃР»СЏСЋС‰РёР№ РґР»РёРЅСѓ РІРµРєС‚РѕСЂР°
     double calculateLength() const {
         return std::sqrt(x * x + y * y + z * z);
     }
 
-    // c. Метод, вычисляющий скалярное произведение
+    // c. РњРµС‚РѕРґ, РІС‹С‡РёСЃР»СЏСЋС‰РёР№ СЃРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
     double dotProduct(const Vector3D& other) const {
         return x * other.x + y * other.y + z * other.z;
     }
 
-    // d. Метод, вычисляющий векторное произведение
+    // d. РњРµС‚РѕРґ, РІС‹С‡РёСЃР»СЏСЋС‰РёР№ РІРµРєС‚РѕСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ
     Vector3D crossProduct(const Vector3D& other) const {
         double resultX = y * other.z - z * other.y;
         double resultY = z * other.x - x * other.z;
@@ -193,14 +193,14 @@ public:
         return Vector3D(resultX, resultY, resultZ);
     }
 
-    // e. Метод, вычисляющий угол между векторами (в радианах)
+    // e. РњРµС‚РѕРґ, РІС‹С‡РёСЃР»СЏСЋС‰РёР№ СѓРіРѕР» РјРµР¶РґСѓ РІРµРєС‚РѕСЂР°РјРё (РІ СЂР°РґРёР°РЅР°С…)
     double calculateAngle(const Vector3D& other) const {
         double dotProd = dotProduct(other);
         double lengthProduct = calculateLength() * other.calculateLength();
         return std::acos(dotProd / lengthProduct);
     }
 
-    // f. Методы для суммы и разности
+    // f. РњРµС‚РѕРґС‹ РґР»СЏ СЃСѓРјРјС‹ Рё СЂР°Р·РЅРѕСЃС‚Рё
     Vector3D add(const Vector3D& other) const {
         return Vector3D(x + other.x, y + other.y, z + other.z);
     }
@@ -209,10 +209,10 @@ public:
         return Vector3D(x - other.x, y - other.y, z - other.z);
     }
 
-    // g. Статический метод, который возвращает массив случайных векторов размером N
+    // g. РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ СЃР»СѓС‡Р°Р№РЅС‹С… РІРµРєС‚РѕСЂРѕРІ СЂР°Р·РјРµСЂРѕРј N
     static std::vector<Vector3D> generateRandomVectors(int N) {
         std::vector<Vector3D> result;
-        std::srand(static_cast<unsigned>(std::time(0))); // инициализация генератора случайных чисел
+        std::srand(static_cast<unsigned>(std::time(0))); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіРµРЅРµСЂР°С‚РѕСЂР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР»
 
         for (int i = 0; i < N; ++i) {
             double xRand = static_cast<double>(std::rand()) / RAND_MAX;
@@ -226,11 +226,11 @@ public:
 };
 
 int main() {
-    // Пример использования
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     Vector3D v1(1.0, 2.0, 3.0);
     Vector3D v2(4.0, 5.0, 6.0);
 
-    // Вызов методов
+    // Р’С‹Р·РѕРІ РјРµС‚РѕРґРѕРІ
     double length = v1.calculateLength();
     double dotProd = v1.dotProduct(v2);
     Vector3D crossProd = v1.crossProduct(v2);
@@ -239,7 +239,7 @@ int main() {
     Vector3D sum = v1.add(v2);
     Vector3D diff = v1.subtract(v2);
 
-    // Статический метод для генерации массива случайных векторов
+    // РЎС‚Р°С‚РёС‡РµСЃРєРёР№ РјРµС‚РѕРґ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹С… РІРµРєС‚РѕСЂРѕРІ
     std::vector<Vector3D> randomVectors = Vector3D::generateRandomVectors(5);
 
     return 0;
@@ -249,17 +249,17 @@ NUM 3
 #include <iostream>
 #include <vector>
 
-// Базовый класс для трехмерных фигур
+// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ С‚СЂРµС…РјРµСЂРЅС‹С… С„РёРіСѓСЂ
 class Shape {
 public:
-    virtual double getVolume() const = 0; // Виртуальный метод для получения объема
+    virtual double getVolume() const = 0; // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕР±СЉРµРјР°
     virtual ~Shape() {}
 };
 
-// Класс для представления куба
+// РљР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РєСѓР±Р°
 class Cube : public Shape {
 private:
-    double side; // Длина стороны куба
+    double side; // Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ РєСѓР±Р°
 
 public:
     Cube(double side) : side(side) {}
@@ -269,10 +269,10 @@ public:
     }
 };
 
-// Класс для представления сферы
+// РљР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ СЃС„РµСЂС‹
 class Sphere : public Shape {
 private:
-    double radius; // Радиус сферы
+    double radius; // Р Р°РґРёСѓСЃ СЃС„РµСЂС‹
 
 public:
     Sphere(double radius) : radius(radius) {}
@@ -282,11 +282,11 @@ public:
     }
 };
 
-// Класс для представления цилиндра
+// РљР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С†РёР»РёРЅРґСЂР°
 class Cylinder : public Shape {
 private:
-    double radius; // Радиус цилиндра
-    double height; // Высота цилиндра
+    double radius; // Р Р°РґРёСѓСЃ С†РёР»РёРЅРґСЂР°
+    double height; // Р’С‹СЃРѕС‚Р° С†РёР»РёРЅРґСЂР°
 
 public:
     Cylinder(double radius, double height) : radius(radius), height(height) {}
@@ -296,16 +296,16 @@ public:
     }
 };
 
-// Класс Box, контейнер для трехмерных фигур
+// РљР»Р°СЃСЃ Box, РєРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ С‚СЂРµС…РјРµСЂРЅС‹С… С„РёРіСѓСЂ
 class Box {
 private:
-    double availableVolume; // Доступный объем в коробке
-    std::vector<Shape*> shapes; // Вектор для хранения фигур в коробке
+    double availableVolume; // Р”РѕСЃС‚СѓРїРЅС‹Р№ РѕР±СЉРµРј РІ РєРѕСЂРѕР±РєРµ
+    std::vector<Shape*> shapes; // Р’РµРєС‚РѕСЂ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С„РёРіСѓСЂ РІ РєРѕСЂРѕР±РєРµ
 
 public:
     Box(double volume) : availableVolume(volume) {}
 
-    // Метод для добавления фигуры в коробку
+    // РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ С„РёРіСѓСЂС‹ РІ РєРѕСЂРѕР±РєСѓ
     bool add(Shape* shape) {
         double shapeVolume = shape->getVolume();
 
@@ -314,11 +314,11 @@ public:
             availableVolume -= shapeVolume;
             return true;
         } else {
-            return false; // Недостаточно места для добавления новой фигуры
+            return false; // РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РјРµСЃС‚Р° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ С„РёРіСѓСЂС‹
         }
     }
 
-    // Метод для вывода информации о фигурах в коробке
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёРіСѓСЂР°С… РІ РєРѕСЂРѕР±РєРµ
     void displayContents() const {
         std::cout << "Box contents:" << std::endl;
         for (const auto& shape : shapes) {
@@ -328,15 +328,15 @@ public:
 };
 
 int main() {
-    // Пример использования
-    Box box(100.0); // Создаем коробку с объемом 100.0
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
+    Box box(100.0); // РЎРѕР·РґР°РµРј РєРѕСЂРѕР±РєСѓ СЃ РѕР±СЉРµРјРѕРј 100.0
 
-    // Создаем фигуры
+    // РЎРѕР·РґР°РµРј С„РёРіСѓСЂС‹
     Cube cube(5.0);
     Sphere sphere(4.0);
     Cylinder cylinder(3.0, 6.0);
 
-    // Добавляем фигуры в коробку
+    // Р”РѕР±Р°РІР»СЏРµРј С„РёРіСѓСЂС‹ РІ РєРѕСЂРѕР±РєСѓ
     if (box.add(&cube)) {
         std::cout << "Cube added to the box." << std::endl;
     } else {
@@ -355,7 +355,7 @@ int main() {
         std::cout << "Not enough space for the cylinder in the box." << std::endl;
     }
 
-    // Выводим содержимое коробки
+    // Р’С‹РІРѕРґРёРј СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕСЂРѕР±РєРё
     box.displayContents();
 
     return 0;
@@ -365,18 +365,18 @@ NUM 4
 #include <iostream>
 #include <vector>
 
-// Абстрактный базовый класс для трехмерных фигур
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ С‚СЂРµС…РјРµСЂРЅС‹С… С„РёРіСѓСЂ
 class Shape {
 public:
-    virtual double getVolume() const = 0; // Чисто виртуальная функция для получения объема
-    virtual void displayInfo() const = 0; // Чисто виртуальная функция для вывода информации
-    virtual ~Shape() {} // Виртуальный деструктор
+    virtual double getVolume() const = 0; // Р§РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕР±СЉРµРјР°
+    virtual void displayInfo() const = 0; // Р§РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё
+    virtual ~Shape() {} // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 };
 
-// Абстрактный класс для представления куба
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ РєСѓР±Р°
 class Cube : public Shape {
 protected:
-    double side; // Длина стороны куба
+    double side; // Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹ РєСѓР±Р°
 
 public:
     Cube(double side) : side(side) {}
@@ -390,10 +390,10 @@ public:
     }
 };
 
-// Абстрактный класс для представления сферы
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ СЃС„РµСЂС‹
 class Sphere : public Shape {
 protected:
-    double radius; // Радиус сферы
+    double radius; // Р Р°РґРёСѓСЃ СЃС„РµСЂС‹
 
 public:
     Sphere(double radius) : radius(radius) {}
@@ -407,11 +407,11 @@ public:
     }
 };
 
-// Абстрактный класс для представления цилиндра
+// РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С†РёР»РёРЅРґСЂР°
 class Cylinder : public Shape {
 protected:
-    double radius; // Радиус цилиндра
-    double height; // Высота цилиндра
+    double radius; // Р Р°РґРёСѓСЃ С†РёР»РёРЅРґСЂР°
+    double height; // Р’С‹СЃРѕС‚Р° С†РёР»РёРЅРґСЂР°
 
 public:
     Cylinder(double radius, double height) : radius(radius), height(height) {}
@@ -425,16 +425,16 @@ public:
     }
 };
 
-// Класс Box, контейнер для трехмерных фигур
+// РљР»Р°СЃСЃ Box, РєРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ С‚СЂРµС…РјРµСЂРЅС‹С… С„РёРіСѓСЂ
 class Box {
 private:
-    double availableVolume; // Доступный объем в коробке
-    std::vector<Shape*> shapes; // Вектор для хранения фигур в коробке
+    double availableVolume; // Р”РѕСЃС‚СѓРїРЅС‹Р№ РѕР±СЉРµРј РІ РєРѕСЂРѕР±РєРµ
+    std::vector<Shape*> shapes; // Р’РµРєС‚РѕСЂ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С„РёРіСѓСЂ РІ РєРѕСЂРѕР±РєРµ
 
 public:
     Box(double volume) : availableVolume(volume) {}
 
-    // Метод для добавления фигуры в коробку
+    // РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ С„РёРіСѓСЂС‹ РІ РєРѕСЂРѕР±РєСѓ
     bool add(Shape* shape) {
         double shapeVolume = shape->getVolume();
 
@@ -443,11 +443,11 @@ public:
             availableVolume -= shapeVolume;
             return true;
         } else {
-            return false; // Недостаточно места для добавления новой фигуры
+            return false; // РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РјРµСЃС‚Р° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ С„РёРіСѓСЂС‹
         }
     }
 
-    // Метод для вывода информации о фигурах в коробке
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёРіСѓСЂР°С… РІ РєРѕСЂРѕР±РєРµ
     void displayContents() const {
         std::cout << "Box contents:" << std::endl;
         for (const auto& shape : shapes) {
@@ -455,7 +455,7 @@ public:
         }
     }
 
-    // Деструктор для освобождения памяти от фигур
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё РѕС‚ С„РёРіСѓСЂ
     ~Box() {
         for (const auto& shape : shapes) {
             delete shape;
@@ -464,15 +464,15 @@ public:
 };
 
 int main() {
-    // Пример использования
-    Box box(100.0); // Создаем коробку с объемом 100.0
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
+    Box box(100.0); // РЎРѕР·РґР°РµРј РєРѕСЂРѕР±РєСѓ СЃ РѕР±СЉРµРјРѕРј 100.0
 
-    // Создаем фигуры
+    // РЎРѕР·РґР°РµРј С„РёРіСѓСЂС‹
     Cube cube(5.0);
     Sphere sphere(4.0);
     Cylinder cylinder(3.0, 6.0);
 
-    // Добавляем фигуры в коробку
+    // Р”РѕР±Р°РІР»СЏРµРј С„РёРіСѓСЂС‹ РІ РєРѕСЂРѕР±РєСѓ
     if (box.add(&cube)) {
         std::cout << "Cube added to the box." << std::endl;
     } else {
@@ -491,7 +491,7 @@ int main() {
         std::cout << "Not enough space for the cylinder in the box." << std::endl;
     }
 
-    // Выводим содержимое коробки
+    // Р’С‹РІРѕРґРёРј СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕСЂРѕР±РєРё
     box.displayContents();
 
     return 0;
@@ -509,11 +509,11 @@ private:
     std::mt19937 generator; // Mersenne Twister 19937 generator
 
 public:
-    // Конструктор, принимающий два массива: массив значений и массив весов значений
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, РїСЂРёРЅРёРјР°СЋС‰РёР№ РґРІР° РјР°СЃСЃРёРІР°: РјР°СЃСЃРёРІ Р·РЅР°С‡РµРЅРёР№ Рё РјР°СЃСЃРёРІ РІРµСЃРѕРІ Р·РЅР°С‡РµРЅРёР№
     WeightedRandomPicker(const std::vector<int>& inputValues, const std::vector<int>& inputWeights)
         : values(inputValues), weights(inputWeights), generator(std::time(0)) {}
 
-    // Метод для возврата элемента из первого массива случайным образом, с учетом его веса
+    // РњРµС‚РѕРґ РґР»СЏ РІРѕР·РІСЂР°С‚Р° СЌР»РµРјРµРЅС‚Р° РёР· РїРµСЂРІРѕРіРѕ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј, СЃ СѓС‡РµС‚РѕРј РµРіРѕ РІРµСЃР°
     int pickRandomValue() const {
         if (values.empty() || weights.empty() || values.size() != weights.size()) {
             throw std::invalid_argument("Invalid input arrays.");
@@ -525,13 +525,13 @@ public:
 };
 
 int main() {
-    // Пример использования
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     std::vector<int> arrayValues = {1, 2, 3};
     std::vector<int> arrayWeights = {1, 2, 10};
 
     WeightedRandomPicker picker(arrayValues, arrayWeights);
 
-    // Выбираем случайные значения с учетом весов
+    // Р’С‹Р±РёСЂР°РµРј СЃР»СѓС‡Р°Р№РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЃ СѓС‡РµС‚РѕРј РІРµСЃРѕРІ
     for (int i = 0; i < 10; ++i) {
         int randomValue = picker.pickRandomValue();
         std::cout << "Random Value: " << randomValue << std::endl;
@@ -546,13 +546,13 @@ NUM 6
 
 class Tiles {
 public:
-    // Поля с открытым доступом
+    // РџРѕР»СЏ СЃ РѕС‚РєСЂС‹С‚С‹Рј РґРѕСЃС‚СѓРїРѕРј
     std::string brand;
     double size_h;
     double size_w;
     double price;
 
-    // Метод для получения данных
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С…
     void getData() const {
         std::cout << "Brand: " << brand << std::endl;
         std::cout << "Size (Height x Width): " << size_h << " x " << size_w << std::endl;
@@ -561,10 +561,10 @@ public:
 };
 
 int main() {
-    // Создаем объекты класса Tiles
+    // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚С‹ РєР»Р°СЃСЃР° Tiles
     Tiles tile1, tile2;
 
-    // Внесение данных в поля объектов
+    // Р’РЅРµСЃРµРЅРёРµ РґР°РЅРЅС‹С… РІ РїРѕР»СЏ РѕР±СЉРµРєС‚РѕРІ
     tile1.brand = "ExampleBrand1";
     tile1.size_h = 10.0;
     tile1.size_w = 5.0;
@@ -575,7 +575,7 @@ int main() {
     tile2.size_w = 6.0;
     tile2.price = 25.0;
 
-    // Выводим данные, вызывая метод getData()
+    // Р’С‹РІРѕРґРёРј РґР°РЅРЅС‹Рµ, РІС‹Р·С‹РІР°СЏ РјРµС‚РѕРґ getData()
     std::cout << "Tile 1:" << std::endl;
     tile1.getData();
     std::cout << std::endl;
@@ -597,7 +597,7 @@ private:
     int age;
 
 public:
-    // Метод для ввода данных
+    // РњРµС‚РѕРґ РґР»СЏ РІРІРѕРґР° РґР°РЅРЅС‹С…
     void inputData() {
         std::cout << "Enter first name: ";
         std::cin >> firstName;
@@ -609,7 +609,7 @@ public:
         std::cin >> age;
     }
 
-    // Метод для отображения данных на экран
+    // РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РґР°РЅРЅС‹С… РЅР° СЌРєСЂР°РЅ
     void displayData() const {
         std::cout << "Name: " << firstName << " " << lastName << std::endl;
         std::cout << "Age: " << age << std::endl;
@@ -617,10 +617,10 @@ public:
 };
 
 int main() {
-    // Создаем объекты класса Children
+    // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚С‹ РєР»Р°СЃСЃР° Children
     Children child1, child2;
 
-    // Внесение данных в поля объектов
+    // Р’РЅРµСЃРµРЅРёРµ РґР°РЅРЅС‹С… РІ РїРѕР»СЏ РѕР±СЉРµРєС‚РѕРІ
     std::cout << "Enter data for child 1:" << std::endl;
     child1.inputData();
 
@@ -629,7 +629,7 @@ int main() {
     std::cout << "Enter data for child 2:" << std::endl;
     child2.inputData();
 
-    // Выводим данные, вызывая метод displayData()
+    // Р’С‹РІРѕРґРёРј РґР°РЅРЅС‹Рµ, РІС‹Р·С‹РІР°СЏ РјРµС‚РѕРґ displayData()
     std::cout << std::endl;
     std::cout << "Data for child 1:" << std::endl;
     child1.displayData();
@@ -651,7 +651,7 @@ private:
     std::vector<std::vector<int>> array;
 
 public:
-    // Метод для заполнения массива значениями
+    // РњРµС‚РѕРґ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° Р·РЅР°С‡РµРЅРёСЏРјРё
     void fillArray() {
         int rows, cols;
         std::cout << "Enter the number of rows: ";
@@ -671,7 +671,7 @@ public:
         }
     }
 
-    // Метод для замены значений строк на значения столбцов
+    // РњРµС‚РѕРґ РґР»СЏ Р·Р°РјРµРЅС‹ Р·РЅР°С‡РµРЅРёР№ СЃС‚СЂРѕРє РЅР° Р·РЅР°С‡РµРЅРёСЏ СЃС‚РѕР»Р±С†РѕРІ
     void convertRowsToColumns() {
         int rows = array.size();
         int cols = (rows > 0) ? array[0].size() : 0;
@@ -687,7 +687,7 @@ public:
         array = result;
     }
 
-    // Метод для отображения массива
+    // РњРµС‚РѕРґ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РјР°СЃСЃРёРІР°
     void displayArray() const {
         int rows = array.size();
         int cols = (rows > 0) ? array[0].size() : 0;
@@ -702,20 +702,20 @@ public:
 };
 
 int main() {
-    // Пример использования
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     ArrayConverter arrayConverter;
 
-    // Заполнение массива значениями
+    // Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° Р·РЅР°С‡РµРЅРёСЏРјРё
     arrayConverter.fillArray();
 
-    // Отображение исходного массива
+    // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     std::cout << "Original array:" << std::endl;
     arrayConverter.displayArray();
 
-    // Произведение замены значений строк на значения столбцов
+    // РџСЂРѕРёР·РІРµРґРµРЅРёРµ Р·Р°РјРµРЅС‹ Р·РЅР°С‡РµРЅРёР№ СЃС‚СЂРѕРє РЅР° Р·РЅР°С‡РµРЅРёСЏ СЃС‚РѕР»Р±С†РѕРІ
     arrayConverter.convertRowsToColumns();
 
-    // Отображение массива после замены
+    // РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РјР°СЃСЃРёРІР° РїРѕСЃР»Рµ Р·Р°РјРµРЅС‹
     std::cout << "\nArray after converting rows to columns:" << std::endl;
     arrayConverter.displayArray();
 
@@ -737,20 +737,20 @@ protected:
 public:
     Worker(int id, const std::string& name) : id(id), name(name) {}
 
-    // Абстрактный метод для расчета среднемесячной зарплаты
+    // РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ СЂР°СЃС‡РµС‚Р° СЃСЂРµРґРЅРµРјРµСЃСЏС‡РЅРѕР№ Р·Р°СЂРїР»Р°С‚С‹
     virtual double calculateMonthlySalary() const = 0;
 
-    // Геттер для получения идентификатора работника
+    // Р“РµС‚С‚РµСЂ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° СЂР°Р±РѕС‚РЅРёРєР°
     int getId() const {
         return id;
     }
 
-    // Геттер для получения имени работника
+    // Р“РµС‚С‚РµСЂ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРјРµРЅРё СЂР°Р±РѕС‚РЅРёРєР°
     const std::string& getName() const {
         return name;
     }
 
-    // Виртуальный деструктор
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     virtual ~Worker() {}
 };
 
@@ -762,7 +762,7 @@ public:
     HourlyWorker(int id, const std::string& name, double hourlyRate)
         : Worker(id, name), hourlyRate(hourlyRate) {}
 
-    // Реализация метода для расчета среднемесячной зарплаты
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґР»СЏ СЂР°СЃС‡РµС‚Р° СЃСЂРµРґРЅРµРјРµСЃСЏС‡РЅРѕР№ Р·Р°СЂРїР»Р°С‚С‹
     double calculateMonthlySalary() const override {
         return 20.8 * 8 * hourlyRate;
     }
@@ -776,13 +776,13 @@ public:
     FixedWorker(int id, const std::string& name, double fixedSalary)
         : Worker(id, name), fixedSalary(fixedSalary) {}
 
-    // Реализация метода для расчета среднемесячной зарплаты
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґР»СЏ СЂР°СЃС‡РµС‚Р° СЃСЂРµРґРЅРµРјРµСЃСЏС‡РЅРѕР№ Р·Р°СЂРїР»Р°С‚С‹
     double calculateMonthlySalary() const override {
         return fixedSalary;
     }
 };
 
-// Функция для упорядочивания списка работников
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРїРѕСЂСЏРґРѕС‡РёРІР°РЅРёСЏ СЃРїРёСЃРєР° СЂР°Р±РѕС‚РЅРёРєРѕРІ
 bool compareWorkers(const Worker* a, const Worker* b) {
     if (a->calculateMonthlySalary() == b->calculateMonthlySalary()) {
         return a->getName() < b->getName();
@@ -790,7 +790,7 @@ bool compareWorkers(const Worker* a, const Worker* b) {
     return a->calculateMonthlySalary() > b->calculateMonthlySalary();
 }
 
-// Функция для вывода информации о работниках
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЂР°Р±РѕС‚РЅРёРєР°С…
 void displayWorkers(const std::vector<Worker*>& workers) {
     std::cout << std::setw(15) << "ID" << std::setw(15) << "Name" << std::setw(25) << "Monthly Salary" << std::endl;
     std::cout << "-------------------------------------------" << std::endl;
@@ -801,28 +801,28 @@ void displayWorkers(const std::vector<Worker*>& workers) {
 }
 
 int main() {
-    // Создаем объекты работников
+    // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚С‹ СЂР°Р±РѕС‚РЅРёРєРѕРІ
     HourlyWorker worker1(1, "John", 15.0);
     FixedWorker worker2(2, "Alice", 2000.0);
     HourlyWorker worker3(3, "Bob", 20.0);
 
-    // Заполняем вектор указателями на объекты работников
+    // Р—Р°РїРѕР»РЅСЏРµРј РІРµРєС‚РѕСЂ СѓРєР°Р·Р°С‚РµР»СЏРјРё РЅР° РѕР±СЉРµРєС‚С‹ СЂР°Р±РѕС‚РЅРёРєРѕРІ
     std::vector<Worker*> workers = {&worker1, &worker2, &worker3};
 
-    // Сортируем список работников
+    // РЎРѕСЂС‚РёСЂСѓРµРј СЃРїРёСЃРѕРє СЂР°Р±РѕС‚РЅРёРєРѕРІ
     std::sort(workers.begin(), workers.end(), compareWorkers);
 
-    // a) Выводим информацию о работниках
+    // a) Р’С‹РІРѕРґРёРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЂР°Р±РѕС‚РЅРёРєР°С…
     std::cout << "a) Ordered list of workers by monthly salary:" << std::endl;
     displayWorkers(workers);
 
-    // b) Выводим первые 5 имен работников
+    // b) Р’С‹РІРѕРґРёРј РїРµСЂРІС‹Рµ 5 РёРјРµРЅ СЂР°Р±РѕС‚РЅРёРєРѕРІ
     std::cout << "\nb) First 5 names of workers:" << std::endl;
     for (int i = 0; i < 5 && i < workers.size(); ++i) {
         std::cout << workers[i]->getName() << std::endl;
     }
 
-    // c) Выводим последние 3 идентификатора работников
+    // c) Р’С‹РІРѕРґРёРј РїРѕСЃР»РµРґРЅРёРµ 3 РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° СЂР°Р±РѕС‚РЅРёРєРѕРІ
     std::cout << "\nc) Last 3 IDs of workers:" << std::endl;
     for (int i = workers.size() - 3; i < workers.size(); ++i) {
         if (i >= 0) {
@@ -830,7 +830,7 @@ int main() {
         }
     }
 
-    // d) Записываем коллекцию в файл
+    // d) Р—Р°РїРёСЃС‹РІР°РµРј РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р»
     std::ofstream outFile("workers.txt");
     if (outFile.is_open()) {
         for (const auto& worker : workers) {
@@ -843,7 +843,7 @@ int main() {
         std::cerr << "Unable to open the output file." << std::endl;
     }
 
-    // e) Читаем коллекцию из файла
+    // e) Р§РёС‚Р°РµРј РєРѕР»Р»РµРєС†РёСЋ РёР· С„Р°Р№Р»Р°
     std::vector<Worker*> readWorkers;
     std::ifstream inFile("workers.txt");
     if (inFile.is_open()) {
@@ -857,11 +857,11 @@ int main() {
         }
         inFile.close();
 
-        // Выводим информацию о считанных работниках
+        // Р’С‹РІРѕРґРёРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃС‡РёС‚Р°РЅРЅС‹С… СЂР°Р±РѕС‚РЅРёРєР°С…
         std::cout << "\ne) List of workers read from 'workers.txt':" << std::endl;
         displayWorkers(readWorkers);
 
-        // Освобождаем память, выделенную для считанных работников
+        // РћСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ, РІС‹РґРµР»РµРЅРЅСѓСЋ РґР»СЏ СЃС‡РёС‚Р°РЅРЅС‹С… СЂР°Р±РѕС‚РЅРёРєРѕРІ
         for (const auto& worker : readWorkers) {
             delete worker;
         }
@@ -877,7 +877,7 @@ NUM 10
 #include <vector>
 #include <string>
 
-// Структура для представления статистики терминала оплаты
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё С‚РµСЂРјРёРЅР°Р»Р° РѕРїР»Р°С‚С‹
 struct TerminalStatistics {
     int trips;
     int singleRideTickets;
@@ -886,7 +886,7 @@ struct TerminalStatistics {
     TerminalStatistics() : trips(0), singleRideTickets(0), revenue(0.0) {}
 };
 
-// Базовый класс транспортной карты
+// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕР№ РєР°СЂС‚С‹
 class TransportCard {
 protected:
     double balance;
@@ -898,23 +898,23 @@ public:
         return balance;
     }
 
-    // Метод для пополнения карты через банкомат
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· Р±Р°РЅРєРѕРјР°С‚
     virtual void rechargeAtATM(double amount) {
         balance += amount;
     }
 
-    // Метод для пополнения карты через мобильное приложение
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· РјРѕР±РёР»СЊРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ
     virtual void rechargeViaMobileApp(double amount) {
         balance += amount;
     }
 
-    // Метод для оплаты поездки
+    // РњРµС‚РѕРґ РґР»СЏ РѕРїР»Р°С‚С‹ РїРѕРµР·РґРєРё
     virtual void payForRide() = 0;
 
     virtual ~TransportCard() {}
 };
 
-// Класс для транспортной карты с фиксированной оплатой в месяц
+// РљР»Р°СЃСЃ РґР»СЏ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕР№ РєР°СЂС‚С‹ СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ РѕРїР»Р°С‚РѕР№ РІ РјРµСЃСЏС†
 class MonthlySubscriptionCard : public TransportCard {
 private:
     std::string cardType;
@@ -932,7 +932,7 @@ public:
         std::cout << "Monthly subscription cards cannot be recharged via mobile app." << std::endl;
     }
 
-    // Реализация метода оплаты поездки
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РѕРїР»Р°С‚С‹ РїРѕРµР·РґРєРё
     void payForRide() override {
         if (balance >= monthlyFee) {
             balance -= monthlyFee;
@@ -943,7 +943,7 @@ public:
     }
 };
 
-// Класс для транспортной карты с разовой оплатой
+// РљР»Р°СЃСЃ РґР»СЏ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕР№ РєР°СЂС‚С‹ СЃ СЂР°Р·РѕРІРѕР№ РѕРїР»Р°С‚РѕР№
 class SingleRideCard : public TransportCard {
 private:
     int singleRideTickets;
@@ -951,66 +951,66 @@ private:
 public:
     SingleRideCard() : singleRideTickets(0) {}
 
-    // Реализация метода оплаты поездки
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РѕРїР»Р°С‚С‹ РїРѕРµР·РґРєРё
     void payForRide() override {
         if (singleRideTickets > 0) {
             --singleRideTickets;
             std::cout << "Ride successfully paid with a single ride ticket." << std::endl;
         } else if (balance >= 2.0) {
-            balance -= 2.0; // Стоимость разовой поездки
+            balance -= 2.0; // РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·РѕРІРѕР№ РїРѕРµР·РґРєРё
             std::cout << "Ride successfully paid with balance." << std::endl;
         } else {
             std::cout << "Insufficient funds. Please recharge your card." << std::endl;
         }
     }
 
-    // Метод для пополнения карты через банкомат
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· Р±Р°РЅРєРѕРјР°С‚
     void rechargeAtATM(double amount) override {
         balance += amount;
     }
 
-    // Метод для пополнения карты через мобильное приложение
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· РјРѕР±РёР»СЊРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ
     void rechargeViaMobileApp(double amount) override {
         balance += amount;
     }
 
-    // Метод для покупки поштучных билетов
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРєСѓРїРєРё РїРѕС€С‚СѓС‡РЅС‹С… Р±РёР»РµС‚РѕРІ
     void buySingleRideTickets(int count) {
         singleRideTickets += count;
     }
 };
 
-// Класс банкомата
+// РљР»Р°СЃСЃ Р±Р°РЅРєРѕРјР°С‚Р°
 class ATM {
 public:
-    // Метод для пополнения карты через банкомат
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· Р±Р°РЅРєРѕРјР°С‚
     void rechargeCardAtATM(TransportCard& card, double amount) {
         card.rechargeAtATM(amount);
     }
 };
 
-// Класс мобильного приложения
+// РљР»Р°СЃСЃ РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
 class MobileApp {
 public:
-    // Метод для пополнения карты через мобильное приложение
+    // РњРµС‚РѕРґ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РєР°СЂС‚С‹ С‡РµСЂРµР· РјРѕР±РёР»СЊРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ
     void rechargeCardViaMobileApp(TransportCard& card, double amount) {
         card.rechargeViaMobileApp(amount);
     }
 };
 
-// Класс терминала оплаты
+// РљР»Р°СЃСЃ С‚РµСЂРјРёРЅР°Р»Р° РѕРїР»Р°С‚С‹
 class PaymentTerminal {
 private:
     TerminalStatistics statistics;
 
 public:
-    // Метод для проверки оплаты поездки
+    // РњРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё РѕРїР»Р°С‚С‹ РїРѕРµР·РґРєРё
     void checkRidePayment(TransportCard& card) {
         card.payForRide();
         ++statistics.trips;
     }
 
-    // Метод для вывода статистики терминала оплаты
+    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° СЃС‚Р°С‚РёСЃС‚РёРєРё С‚РµСЂРјРёРЅР°Р»Р° РѕРїР»Р°С‚С‹
     void displayStatistics() const {
         std::cout << "Terminal Statistics:" << std::endl;
         std::cout << "Trips: " << statistics.trips << std::endl;
@@ -1020,7 +1020,7 @@ public:
 };
 
 int main() {
-    // Пример использования
+    // РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     MonthlySubscriptionCard studentCard("Student", 30.0);
     SingleRideCard singleRideCard;
 
@@ -1028,17 +1028,17 @@ int main() {
     MobileApp mobileApp;
     PaymentTerminal paymentTerminal;
 
-    // Пополнение карт через банкомат и мобильное приложение
+    // РџРѕРїРѕР»РЅРµРЅРёРµ РєР°СЂС‚ С‡РµСЂРµР· Р±Р°РЅРєРѕРјР°С‚ Рё РјРѕР±РёР»СЊРЅРѕРµ РїСЂРёР»РѕР¶РµРЅРёРµ
     atm.rechargeCardAtATM(studentCard, 50.0);
     mobileApp.rechargeCardViaMobileApp(singleRideCard, 20.0);
 
-    // Покупка поштучных билетов
+    // РџРѕРєСѓРїРєР° РїРѕС€С‚СѓС‡РЅС‹С… Р±РёР»РµС‚РѕРІ
     singleRideCard.buySingleRideTickets(5);
 
-    // Проверка оплаты поездки через терминал
+    // РџСЂРѕРІРµСЂРєР° РѕРїР»Р°С‚С‹ РїРѕРµР·РґРєРё С‡РµСЂРµР· С‚РµСЂРјРёРЅР°Р»
     paymentTerminal.checkRidePayment(studentCard);
     paymentTerminal.checkRidePayment(singleRideCard);
     paymentTerminal.checkRidePayment(singleRideCard);
 
-    // Вывод статистики терминала оплаты
+    // Р’С‹РІРѕРґ СЃС‚Р°С‚РёСЃС‚РёРєРё С‚РµСЂРјРёРЅР°Р»Р° РѕРїР»Р°С‚С‹
     paymentTerminal.displayStatistics();

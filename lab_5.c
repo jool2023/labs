@@ -1,19 +1,19 @@
-Задача 1.
-Необходимо написать bash-скрипт, который обработает текстовый файл log.txt в формате Acсess log веб-сервера Apache и выведет в консоль информацию, которая описана в секции “Расшифровка”.
+Р—Р°РґР°С‡Р° 1.
+РќРµРѕР±С…РѕРґРёРјРѕ РЅР°РїРёСЃР°С‚СЊ bash-СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ РѕР±СЂР°Р±РѕС‚Р°РµС‚ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р» log.txt РІ С„РѕСЂРјР°С‚Рµ AcСЃess log РІРµР±-СЃРµСЂРІРµСЂР° Apache Рё РІС‹РІРµРґРµС‚ РІ РєРѕРЅСЃРѕР»СЊ РёРЅС„РѕСЂРјР°С†РёСЋ, РєРѕС‚РѕСЂР°СЏ РѕРїРёСЃР°РЅР° РІ СЃРµРєС†РёРё вЂњР Р°СЃС€РёС„СЂРѕРІРєР°вЂќ.
 #!/bin/bash
 
-# Проверка наличия аргумента - имени файла
+# РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ Р°СЂРіСѓРјРµРЅС‚Р° - РёРјРµРЅРё С„Р°Р№Р»Р°
 if [ -z "$1" ]; then
     echo "log.txt"
     exit 1
 fi
 
-# Чтение файла построчно
+# Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° РїРѕСЃС‚СЂРѕС‡РЅРѕ
 while IFS= read -r line; do
-    # Разделение строки на поля, используя пробел как разделитель
+    # Р Р°Р·РґРµР»РµРЅРёРµ СЃС‚СЂРѕРєРё РЅР° РїРѕР»СЏ, РёСЃРїРѕР»СЊР·СѓСЏ РїСЂРѕР±РµР» РєР°Рє СЂР°Р·РґРµР»РёС‚РµР»СЊ
     fields=($line)
 
-    # Извлечение нужных полей
+    # РР·РІР»РµС‡РµРЅРёРµ РЅСѓР¶РЅС‹С… РїРѕР»РµР№
     client_host=${fields[0]}
     timestamp=${fields[3]} ${fields[4]}
     request=${fields[5]} ${fields[6]} ${fields[7]}
@@ -22,41 +22,41 @@ while IFS= read -r line; do
     referer=${fields[10]}
     user_agent=${fields[11]}
 
-    # Вывод информации
-    echo "Хост клиента: $client_host"
-    echo "Время: $timestamp"
-    echo "HTTP-запрос: $request"
-    echo "HTTP-статус: $http_status"
-    echo "Переданные байты: $bytes_transferred"
-    echo "Реферер: $referer"
-    echo "Клиент: $user_agent"
+    # Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё
+    echo "РҐРѕСЃС‚ РєР»РёРµРЅС‚Р°: $client_host"
+    echo "Р’СЂРµРјСЏ: $timestamp"
+    echo "HTTP-Р·Р°РїСЂРѕСЃ: $request"
+    echo "HTTP-СЃС‚Р°С‚СѓСЃ: $http_status"
+    echo "РџРµСЂРµРґР°РЅРЅС‹Рµ Р±Р°Р№С‚С‹: $bytes_transferred"
+    echo "Р РµС„РµСЂРµСЂ: $referer"
+    echo "РљР»РёРµРЅС‚: $user_agent"
 
-    # Разделитель для удобства чтения вывода
+    # Р Р°Р·РґРµР»РёС‚РµР»СЊ РґР»СЏ СѓРґРѕР±СЃС‚РІР° С‡С‚РµРЅРёСЏ РІС‹РІРѕРґР°
     echo "----------------------------------------"
 
 done < "$1"
 
 
-Задача 2.
-Модифицируйте программу так, чтобы ей можно было передать один (необязательный) параметр, в котором указать код завершения операции. При указании этого параметра, программа фильтрует содержимое файла и выводить только те строчки, которые имеют именно этот код процесса.
+Р—Р°РґР°С‡Р° 2.
+РњРѕРґРёС„РёС†РёСЂСѓР№С‚Рµ РїСЂРѕРіСЂР°РјРјСѓ С‚Р°Рє, С‡С‚РѕР±С‹ РµР№ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РїРµСЂРµРґР°С‚СЊ РѕРґРёРЅ (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№) РїР°СЂР°РјРµС‚СЂ, РІ РєРѕС‚РѕСЂРѕРј СѓРєР°Р·Р°С‚СЊ РєРѕРґ Р·Р°РІРµСЂС€РµРЅРёСЏ РѕРїРµСЂР°С†РёРё. РџСЂРё СѓРєР°Р·Р°РЅРёРё СЌС‚РѕРіРѕ РїР°СЂР°РјРµС‚СЂР°, РїСЂРѕРіСЂР°РјРјР° С„РёР»СЊС‚СЂСѓРµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р° Рё РІС‹РІРѕРґРёС‚СЊ С‚РѕР»СЊРєРѕ С‚Рµ СЃС‚СЂРѕС‡РєРё, РєРѕС‚РѕСЂС‹Рµ РёРјРµСЋС‚ РёРјРµРЅРЅРѕ СЌС‚РѕС‚ РєРѕРґ РїСЂРѕС†РµСЃСЃР°.
 
 #!/bin/bash
 
-# Проверка наличия аргумента - имени файла
+# РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ Р°СЂРіСѓРјРµРЅС‚Р° - РёРјРµРЅРё С„Р°Р№Р»Р°
 if [ -z "$1" ]; then
     echo "log.txt"
     exit 1
 fi
 
-# Код завершения операции (если указан)
+# РљРѕРґ Р·Р°РІРµСЂС€РµРЅРёСЏ РѕРїРµСЂР°С†РёРё (РµСЃР»Рё СѓРєР°Р·Р°РЅ)
 exit_code=$2
 
-# Чтение файла построчно
+# Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° РїРѕСЃС‚СЂРѕС‡РЅРѕ
 while IFS= read -r line; do
-    # Разделение строки на поля, используя пробел как разделитель
+    # Р Р°Р·РґРµР»РµРЅРёРµ СЃС‚СЂРѕРєРё РЅР° РїРѕР»СЏ, РёСЃРїРѕР»СЊР·СѓСЏ РїСЂРѕР±РµР» РєР°Рє СЂР°Р·РґРµР»РёС‚РµР»СЊ
     fields=($line)
 
-    # Извлечение нужных полей
+    # РР·РІР»РµС‡РµРЅРёРµ РЅСѓР¶РЅС‹С… РїРѕР»РµР№
     client_host=${fields[0]}
     timestamp=${fields[3]} ${fields[4]}
     request=${fields[5]} ${fields[6]} ${fields[7]}
@@ -65,62 +65,62 @@ while IFS= read -r line; do
     referer=${fields[10]}
     user_agent=${fields[11]}
 
-    # Вывод информации
-    echo "Хост клиента: $client_host"
-    echo "Время: $timestamp"
-    echo "HTTP-запрос: $request"
-    echo "HTTP-статус: $http_status"
-    echo "Переданные байты: $bytes_transferred"
-    echo "Реферер: $referer"
-    echo "Клиент: $user_agent"
+    # Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё
+    echo "РҐРѕСЃС‚ РєР»РёРµРЅС‚Р°: $client_host"
+    echo "Р’СЂРµРјСЏ: $timestamp"
+    echo "HTTP-Р·Р°РїСЂРѕСЃ: $request"
+    echo "HTTP-СЃС‚Р°С‚СѓСЃ: $http_status"
+    echo "РџРµСЂРµРґР°РЅРЅС‹Рµ Р±Р°Р№С‚С‹: $bytes_transferred"
+    echo "Р РµС„РµСЂРµСЂ: $referer"
+    echo "РљР»РёРµРЅС‚: $user_agent"
 
-    # Разделитель для удобства чтения вывода
+    # Р Р°Р·РґРµР»РёС‚РµР»СЊ РґР»СЏ СѓРґРѕР±СЃС‚РІР° С‡С‚РµРЅРёСЏ РІС‹РІРѕРґР°
     echo "----------------------------------------"
 
-    # Проверка кода завершения операции
+    # РџСЂРѕРІРµСЂРєР° РєРѕРґР° Р·Р°РІРµСЂС€РµРЅРёСЏ РѕРїРµСЂР°С†РёРё
     if [ -n "$exit_code" ] && [ "$http_status" != "$exit_code" ]; then
         continue
     fi
 
-    # Вывод строки, если код завершения совпадает
+    # Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё, РµСЃР»Рё РєРѕРґ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРѕРІРїР°РґР°РµС‚
     echo "$line"
 
 done < "$1"
 
 
-Задача 3.
-Добавьте в программу возможность указывать ключи (количество и наименования по вашему усмотрению) для фильтрации данных по любому полю.
+Р—Р°РґР°С‡Р° 3.
+Р”РѕР±Р°РІСЊС‚Рµ РІ РїСЂРѕРіСЂР°РјРјСѓ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СѓРєР°Р·С‹РІР°С‚СЊ РєР»СЋС‡Рё (РєРѕР»РёС‡РµСЃС‚РІРѕ Рё РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ РїРѕ РІР°С€РµРјСѓ СѓСЃРјРѕС‚СЂРµРЅРёСЋ) РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё РґР°РЅРЅС‹С… РїРѕ Р»СЋР±РѕРјСѓ РїРѕР»СЋ.
 #!/bin/bash
 
-# Параметры по умолчанию
+# РџР°СЂР°РјРµС‚СЂС‹ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 file_name=""
 exit_code=""
 filter_field=""
 filter_value=""
 
-# Обработка ключей командной строки
+# РћР±СЂР°Р±РѕС‚РєР° РєР»СЋС‡РµР№ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
 while getopts ":f:c:k:v:" opt; do
     case $opt in
         f) file_name="$OPTARG";;
         c) exit_code="$OPTARG";;
         k) filter_field="$OPTARG";;
         v) filter_value="$OPTARG";;
-        \?) echo "Неверный ключ: -$OPTARG" >&2; exit 1;;
+        \?) echo "РќРµРІРµСЂРЅС‹Р№ РєР»СЋС‡: -$OPTARG" >&2; exit 1;;
     esac
 done
 
-# Проверка наличия обязательного параметра - имени файла
+# РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРіРѕ РїР°СЂР°РјРµС‚СЂР° - РёРјРµРЅРё С„Р°Р№Р»Р°
 if [ -z "$log.txt" ]; then
     echo "log.txt"
     exit 1
 fi
 
-# Чтение файла построчно
+# Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° РїРѕСЃС‚СЂРѕС‡РЅРѕ
 while IFS= read -r line; do
-    # Разделение строки на поля, используя пробел как разделитель
+    # Р Р°Р·РґРµР»РµРЅРёРµ СЃС‚СЂРѕРєРё РЅР° РїРѕР»СЏ, РёСЃРїРѕР»СЊР·СѓСЏ РїСЂРѕР±РµР» РєР°Рє СЂР°Р·РґРµР»РёС‚РµР»СЊ
     fields=($line)
 
-    # Извлечение нужных полей
+    # РР·РІР»РµС‡РµРЅРёРµ РЅСѓР¶РЅС‹С… РїРѕР»РµР№
     client_host=${fields[0]}
     timestamp=${fields[3]} ${fields[4]}
     request=${fields[5]} ${fields[6]} ${fields[7]}
@@ -129,24 +129,24 @@ while IFS= read -r line; do
     referer=${fields[10]}
     user_agent=${fields[11]}
 
-    # Вывод информации
-    echo "Хост клиента: $client_host"
-    echo "Время: $timestamp"
-    echo "HTTP-запрос: $request"
-    echo "HTTP-статус: $http_status"
-    echo "Переданные байты: $bytes_transferred"
-    echo "Реферер: $referer"
-    echo "Клиент: $user_agent"
+    # Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё
+    echo "РҐРѕСЃС‚ РєР»РёРµРЅС‚Р°: $client_host"
+    echo "Р’СЂРµРјСЏ: $timestamp"
+    echo "HTTP-Р·Р°РїСЂРѕСЃ: $request"
+    echo "HTTP-СЃС‚Р°С‚СѓСЃ: $http_status"
+    echo "РџРµСЂРµРґР°РЅРЅС‹Рµ Р±Р°Р№С‚С‹: $bytes_transferred"
+    echo "Р РµС„РµСЂРµСЂ: $referer"
+    echo "РљР»РёРµРЅС‚: $user_agent"
 
-    # Разделитель для удобства чтения вывода
+    # Р Р°Р·РґРµР»РёС‚РµР»СЊ РґР»СЏ СѓРґРѕР±СЃС‚РІР° С‡С‚РµРЅРёСЏ РІС‹РІРѕРґР°
     echo "----------------------------------------"
 
-    # Проверка кода завершения операции
+    # РџСЂРѕРІРµСЂРєР° РєРѕРґР° Р·Р°РІРµСЂС€РµРЅРёСЏ РѕРїРµСЂР°С†РёРё
     if [ -n "$exit_code" ] && [ "$http_status" != "$exit_code" ]; then
         continue
     fi
 
-    # Проверка фильтрации по ключам
+    # РџСЂРѕРІРµСЂРєР° С„РёР»СЊС‚СЂР°С†РёРё РїРѕ РєР»СЋС‡Р°Рј
     if [ -n "$filter_field" ] && [ -n "$filter_value" ]; then
         field_value=${fields[$filter_field]}
         if [ "$field_value" != "$filter_value" ]; then
@@ -154,20 +154,20 @@ while IFS= read -r line; do
         fi
     fi
 
-    # Вывод строки, если все условия выполнены
+    # Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё, РµСЃР»Рё РІСЃРµ СѓСЃР»РѕРІРёСЏ РІС‹РїРѕР»РЅРµРЅС‹
     echo "$line"
 
 done < "$log.txt"
 
 
-Задача 4.
-Реализовать задачи 1-3 при помощи языка программирования C.
+Р—Р°РґР°С‡Р° 4.
+Р РµР°Р»РёР·РѕРІР°С‚СЊ Р·Р°РґР°С‡Рё 1-3 РїСЂРё РїРѕРјРѕС‰Рё СЏР·С‹РєР° РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ C.
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// Структура для хранения данных из log-файла
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РёР· log-С„Р°Р№Р»Р°
 struct LogEntry {
     char client_host[256];
     char timestamp[256];
@@ -178,12 +178,12 @@ struct LogEntry {
     char user_agent[1024];
 };
 
-// Функция для обработки log-файла и вывода информации
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё log-С„Р°Р№Р»Р° Рё РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё
 void processLogFile(const char *file_name, const char *exit_code, const char *filter_field, const char *filter_value) {
     FILE *file = fopen(file_name, "r");
 
     if (file == NULL) {
-        perror("Ошибка открытия файла");
+        perror("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°");
         exit(EXIT_FAILURE);
     }
 
@@ -195,24 +195,24 @@ void processLogFile(const char *file_name, const char *exit_code, const char *fi
                entry.client_host, entry.timestamp, entry.request, entry.http_status,
                entry.bytes_transferred, entry.referer, entry.user_agent);
 
-        // Вывод информации
-        printf("Хост клиента: %s\n", entry.client_host);
-        printf("Время: %s\n", entry.timestamp);
-        printf("HTTP-запрос: %s\n", entry.request);
-        printf("HTTP-статус: %s\n", entry.http_status);
-        printf("Переданные байты: %s\n", entry.bytes_transferred);
-        printf("Реферер: %s\n", entry.referer);
-        printf("Клиент: %s\n", entry.user_agent);
+        // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё
+        printf("РҐРѕСЃС‚ РєР»РёРµРЅС‚Р°: %s\n", entry.client_host);
+        printf("Р’СЂРµРјСЏ: %s\n", entry.timestamp);
+        printf("HTTP-Р·Р°РїСЂРѕСЃ: %s\n", entry.request);
+        printf("HTTP-СЃС‚Р°С‚СѓСЃ: %s\n", entry.http_status);
+        printf("РџРµСЂРµРґР°РЅРЅС‹Рµ Р±Р°Р№С‚С‹: %s\n", entry.bytes_transferred);
+        printf("Р РµС„РµСЂРµСЂ: %s\n", entry.referer);
+        printf("РљР»РёРµРЅС‚: %s\n", entry.user_agent);
 
-        // Разделитель для удобства чтения вывода
+        // Р Р°Р·РґРµР»РёС‚РµР»СЊ РґР»СЏ СѓРґРѕР±СЃС‚РІР° С‡С‚РµРЅРёСЏ РІС‹РІРѕРґР°
         printf("----------------------------------------\n");
 
-        // Проверка кода завершения операции
+        // РџСЂРѕРІРµСЂРєР° РєРѕРґР° Р·Р°РІРµСЂС€РµРЅРёСЏ РѕРїРµСЂР°С†РёРё
         if (exit_code != NULL && strcmp(entry.http_status, exit_code) != 0) {
             continue;
         }
 
-        // Проверка фильтрации по ключам
+        // РџСЂРѕРІРµСЂРєР° С„РёР»СЊС‚СЂР°С†РёРё РїРѕ РєР»СЋС‡Р°Рј
         if (filter_field != NULL && filter_value != NULL) {
             int field = atoi(filter_field);
             char *field_value;
@@ -240,7 +240,7 @@ void processLogFile(const char *file_name, const char *exit_code, const char *fi
                     field_value = entry.user_agent;
                     break;
                 default:
-                    fprintf(stderr, "Неверный номер поля для фильтрации\n");
+                    fprintf(stderr, "РќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РїРѕР»СЏ РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё\n");
                     exit(EXIT_FAILURE);
             }
 
@@ -249,7 +249,7 @@ void processLogFile(const char *file_name, const char *exit_code, const char *fi
             }
         }
 
-        // Вывод строки, если все условия выполнены
+        // Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё, РµСЃР»Рё РІСЃРµ СѓСЃР»РѕРІРёСЏ РІС‹РїРѕР»РЅРµРЅС‹
         printf("%s", line);
     }
 
@@ -258,7 +258,7 @@ void processLogFile(const char *file_name, const char *exit_code, const char *fi
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Укажите имя файла в качестве аргумента\n");
+        fprintf(stderr, "РЈРєР°Р¶РёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° РІ РєР°С‡РµСЃС‚РІРµ Р°СЂРіСѓРјРµРЅС‚Р°\n");
         return EXIT_FAILURE;
     }
 
@@ -267,7 +267,7 @@ int main(int argc, char *argv[]) {
     const char *filter_field = NULL;
     const char *filter_value = NULL;
 
-    // Обработка ключей командной строки
+    // РћР±СЂР°Р±РѕС‚РєР° РєР»СЋС‡РµР№ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     for (int i = 2; i < argc; i += 2) {
         if (i + 1 < argc) {
             if (strcmp(argv[i], "-c") == 0) {
@@ -277,24 +277,24 @@ int main(int argc, char *argv[]) {
             } else if (strcmp(argv[i], "-v") == 0) {
                 filter_value = argv[i + 1];
             } else {
-                fprintf(stderr, "Неверный ключ: %s\n", argv[i]);
+                fprintf(stderr, "РќРµРІРµСЂРЅС‹Р№ РєР»СЋС‡: %s\n", argv[i]);
                 return EXIT_FAILURE;
             }
         } else {
-            fprintf(stderr, "Отсутствует значение для ключа: %s\n", argv[i]);
+            fprintf(stderr, "РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ РєР»СЋС‡Р°: %s\n", argv[i]);
             return EXIT_FAILURE;
         }
     }
 
-    // Вызов функции для обработки log-файла
+    // Р’С‹Р·РѕРІ С„СѓРЅРєС†РёРё РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё log-С„Р°Р№Р»Р°
     processLogFile(file_name, exit_code, filter_field, filter_value);
 
     return EXIT_SUCCESS;
 }
 
 
-Шифрование
-1. Обобщенный шифр Цезаря (Caesar Cipher)
+РЁРёС„СЂРѕРІР°РЅРёРµ
+1. РћР±РѕР±С‰РµРЅРЅС‹Р№ С€РёС„СЂ Р¦РµР·Р°СЂСЏ (Caesar Cipher)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -318,7 +318,7 @@ int main() {
     char text[] = "Hello, World!";
     int shift = 3;
 
-    // Шифрование и дешифрование
+    // РЁРёС„СЂРѕРІР°РЅРёРµ Рё РґРµС€РёС„СЂРѕРІР°РЅРёРµ
     encryptCaesar(text, shift);
     printf("Encrypted: %s\n", text);
 
@@ -328,7 +328,7 @@ int main() {
     return 0;
 }
 
-2. Восстановление текста, не зная ключа (Brute Force)
+2. Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ С‚РµРєСЃС‚Р°, РЅРµ Р·РЅР°СЏ РєР»СЋС‡Р° (Brute Force)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -345,13 +345,13 @@ void bruteForceDecryptCaesar(char *text) {
 int main() {
     char text[] = "Khoor, Zruog!";
 
-    // Восстановление текста без знания ключа
+    // Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ С‚РµРєСЃС‚Р° Р±РµР· Р·РЅР°РЅРёСЏ РєР»СЋС‡Р°
     bruteForceDecryptCaesar(text);
 
     return 0;
 }
 
-3. Шифр Вернама (Vernam Cipher)
+3. РЁРёС„СЂ Р’РµСЂРЅР°РјР° (Vernam Cipher)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -371,7 +371,7 @@ int main() {
     char text[] = "Hello, World!";
     const char key[] = "secretkey";
 
-    // Шифрование и дешифрование
+    // РЁРёС„СЂРѕРІР°РЅРёРµ Рё РґРµС€РёС„СЂРѕРІР°РЅРёРµ
     encryptVernam(text, key);
     printf("Encrypted: %s\n", text);
 
@@ -381,7 +381,7 @@ int main() {
     return 0;
 }
 
-4. Алгоритм OTP (One-Time Pad)
+4. РђР»РіРѕСЂРёС‚Рј OTP (One-Time Pad)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -401,7 +401,7 @@ int main() {
     char text[] = "Hello, World!";
     const char key[] = "randomkey";
 
-    // Шифрование и дешифрование
+    // РЁРёС„СЂРѕРІР°РЅРёРµ Рё РґРµС€РёС„СЂРѕРІР°РЅРёРµ
     encryptOTP(text, key);
     printf("Encrypted: %s\n", text);
 
